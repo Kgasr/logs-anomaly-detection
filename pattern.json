@@ -1,0 +1,30 @@
+{
+  "error_codes": {
+    "404": {
+      "status": "404",
+      "threshold": 1
+    },
+    "500": {
+      "status": "500",
+      "threshold": 3
+    },
+    "403": {
+      "status": "403",
+      "threshold": 3
+    },
+   "ERR1": {
+     "status": "ERR1",
+     "threshold": 3
+   },
+   "ERR2": {
+     "status": "ERR2",
+     "threshold": 2
+   },
+   "ERR3": {
+     "status": "ERR3",
+     "threshold": 2
+   }
+ },
+  "high_request_threshold": 10,
+  "time_window": "1T"
+}
