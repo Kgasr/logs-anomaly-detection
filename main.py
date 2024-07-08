@@ -2,45 +2,28 @@ import sys
 import pandas as pd
 
 from train_and_predict import training, prediction
-from common import read_parameters, extract_features
+from common import read_yaml, extract_features, save_results
 from parsers import parse_app_logs, parse_squid_logs, parse_iis_logs, parse_apache_logs
 
 
 def initialize():
-    mode = 'Predict'
-    """
-    # IIS Setup
-    model_name = 'Models/iis_model.pkl'
-    log_type = 'iis'
-    log_file = 'TestData/IIS Logs/iis_sample.log'
-    """
+    config = read_yaml('config.yaml')
 
-    # Apache Setup
-    model_name = 'Models/apache_model.pkl'
-    log_type = 'apache'
-    log_file = 'TestData/Apache Logs/access.logs'
+    mode = config['model']['mode']
+    model_name = config['model']['model_name']
 
-    """
-    # Squid Setup
-    model_name = 'Models/squid_model.pkl'
-    log_type = 'squid'
-    log_file = 'TestData/Squid Logs/sample.log'
-    """
-    """
-    # Custom App Setup
-    model_name = 'Models/app_model.pkl'
-    log_type = 'custom_app'
-    log_file = 'TestData/Sample Application Logs/app_logs.log'
-    """
+    log_type = config['log']['log_type']
+    log_file = config['log']['log_file']
 
-    return mode, model_name, log_type, log_file
+    output_file = config['output']['output_file']
+    return mode, model_name, log_type, log_file, output_file
 
 
 if __name__ == "__main__":
-    mode, model_name, log_type, log_file = initialize()
-    parameters = read_parameters('pattern.json')
+    mode, model_name, log_type, log_file, output_file = initialize()
+    parameters = read_yaml('patterns.yaml')
     features_df = pd.DataFrame(columns=['cip', 'datetime', 'num_requests'] + list(parameters['error_codes'].keys()) + ['is_anomaly'])
-
+    features_df.columns = features_df.columns.astype(str)
     if log_type == 'iis':
         log_df = parse_iis_logs.read_log(log_file)
     elif log_type == 'apache':
@@ -56,6 +39,7 @@ if __name__ == "__main__":
     features_dataframe = extract_features(log_df, parameters, features_df)
     if mode == "Predict":
         result = prediction(features_dataframe, model_name)
+        save_results(result, output_file)
     elif mode == "Train":
         result = training(features_dataframe, model_name)
 

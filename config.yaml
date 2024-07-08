@@ -1,0 +1,13 @@
+model:
+  #Replace model name & path with your model name & path
+  model_name : "Models/app_model.pkl"
+  #Use Train or Predict to execute required step
+  mode : "Predict"
+
+log:
+  #Use appropriate logs type such as iis, apache, squid, custom_app
+  log_type : "custom_app"
+  log_file : "TestData/Sample Application Logs/app_logs.log"
+
+output:
+  output_file : "results/output.xlsx"
