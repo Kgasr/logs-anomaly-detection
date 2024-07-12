@@ -1,4 +1,4 @@
-/archive/
 /models/
 /venv/
-/TestData/
+/data/
+/output/archive/*

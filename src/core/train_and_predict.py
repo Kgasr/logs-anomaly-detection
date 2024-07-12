@@ -10,8 +10,10 @@ def setup_features(features):
 
 def training(features, model_name):
     X, y = setup_features(features)
+    print(X)
+    print(y)
     model = IsolationForest(contamination=0.01, random_state=42)
-    model.fit(X[y == False])
+    model.fit(X, y)
     joblib.dump(model, model_name)
     return "Model saved successfully."
 
@@ -19,7 +21,15 @@ def training(features, model_name):
 def prediction(features, model_name):
     model = joblib.load(model_name)
     X, y = setup_features(features)
+    print(X)
+    print(y)
     anomalies = model.predict(X)
-    y== (anomalies == -1).astype(bool)
-    anomalous_records = features[features['is_anomaly'] == True]
+    print(anomalies)
+    print(anomalies == -1)
+    print((anomalies == -1).astype(bool))
+    print(y == (anomalies == -1).astype(bool))
+    features['anomaly'] = (anomalies == -1).astype(bool)
+    # anomalous_records = y == (anomalies == -1).astype(bool)
+    anomalous_records = features[features['anomaly'] == True]
+    print(anomalous_records)
     return anomalous_records
