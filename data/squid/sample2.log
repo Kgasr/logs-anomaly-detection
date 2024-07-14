@@ -1,0 +1,48 @@
+#datetime response-time c-ip status size method url username squid-status content-type
+# 8 403 for 192.168.1.11
+1620147600.000 300 192.168.1.11 TCP_DENIED/403 1234 GET http://example.com/page1.html - HIER_DIRECT/example.com text/html
+1620147601.000 150 192.168.1.11 TCP_DENIED/403 5678 GET http://example.com/page2.html - HIER_NONE text/html
+1620147602.000 100 192.168.1.111 TCP_HIT/200 234 GET http://example.com/page3.html - HIER_DIRECT/example.com text/html
+1620147603.000 200 192.168.1.111 TCP_HIT/200 876 GET http://example.com/page4.html - HIER_NONE text/html
+1620147604.000 400 192.168.1.11 TCP_DENIED/403 678 GET http://example.com/page5.html - HIER_DIRECT/example.com text/html
+1620147605.000 250 192.168.1.11 TCP_DENIED/403 123 GET http://example.com/page6.html - HIER_NONE text/html
+1620147606.000 350 192.168.1.11 TCP_DENIED/403 3456 GET http://example.com/page7.html - HIER_DIRECT/example.com text/html
+1620147607.000 200 192.168.1.111 TCP_HIT/200 876 GET http://example.com/page4.html - HIER_NONE text/html
+1620147608.000 400 192.168.1.11 TCP_DENIED/403 678 GET http://example.com/page5.html - HIER_DIRECT/example.com text/html
+1620147608.000 250 192.168.1.11 TCP_DENIED/403 123 GET http://example.com/page6.html - HIER_NONE text/html
+1620147610.000 350 192.168.1.11 TCP_DENIED/403 3456 GET http://example.com/page7.html - HIER_DIRECT/example.com text/html
+# 5 404 for 192.168.1.12
+1620147727.000 100 192.168.1.12 TCP_MISS/404 2345 GET http://example.com/page8.html - HIER_NONE text/html
+1620147728.000 50 192.168.1.12 TCP_MISS/404 345 GET http://example.com/page9.html - HIER_DIRECT/example.com text/html
+1620147729.000 450 192.168.1.112 TCP_HIT/200 4567 GET http://example.com/page10.html - HIER_DIRECT/example.com text/html
+1620147730.000 300 192.168.1.12 TCP_MISS/404 567 GET http://example.com/page11.html - HIER_NONE text/html
+1620147731.000 150 192.168.1.12 TCP_MISS/404 6789 GET http://example.com/page12.html - HIER_DIRECT/example.com text/html
+1620147732.000 200 192.168.1.112 TCP_HIT/200 789 GET http://example.com/page13.html - HIER_NONE text/html
+1620147733.000 200 192.168.1.12 TCP_MISS/404 789 GET http://example.com/page13.html - HIER_NONE text/html
+# 8 500 for 192.168.1.13
+1620147833.000 250 192.168.1.13 TCP_MISS/500 890 GET http://example.com/page14.html - HIER_DIRECT/example.com text/html
+1620147834.000 350 192.168.1.113 TCP_HIT/200 901 GET http://example.com/page15.html - HIER_NONE text/html
+1620147835.000 400 192.168.1.13 TCP_MISS/500 1234 GET http://example.com/page16.html - HIER_DIRECT/example.com text/html
+1620147836.000 100 192.168.1.13 TCP_MISS/500 234 GET http://example.com/page17.html - HIER_NONE text/html
+1620147837.000 50 192.168.1.13 TCP_MISS/500 345 GET http://example.com/page18.html - HIER_DIRECT/example.com text/html
+1620147838.000 150 192.168.1.113 TCP_HIT/200 456 GET http://example.com/page19.html - HIER_NONE text/html
+1620147839.000 300 192.168.1.13 TCP_MISS/500 567 GET http://example.com/page20.html - HIER_DIRECT/example.com text/html
+1620147840.000 300 192.168.1.13 TCP_MISS/500 567 GET http://example.com/page20.html - HIER_DIRECT/example.com text/html
+1620147841.000 300 192.168.1.13 TCP_MISS/500 567 GET http://example.com/page20.html - HIER_DIRECT/example.com text/html
+1620147842.000 150 192.168.1.113 TCP_HIT/200 456 GET http://example.com/page19.html - HIER_NONE text/html
+1620147843.000 300 192.168.1.13 TCP_MISS/500 567 GET http://example.com/page20.html - HIER_DIRECT/example.com text/html
+# 10 requests overall for 192.168.1.14
+1620148620.000 300 192.168.1.14 TCP_MISS/500 1234 GET http://example.com/page1.html - HIER_DIRECT/example.com text/html
+1620148621.000 150 192.168.1.14 TCP_HIT/500 5678 GET http://example.com/page2.html - HIER_NONE text/html
+1620148622.000 100 192.168.1.114 TCP_MISS/200 234 GET http://example.com/page3.html - HIER_DIRECT/example.com text/html
+1620148623.000 200 192.168.1.14 TCP_HIT/200 876 GET http://example.com/page4.html - HIER_NONE text/html
+1620148624.000 400 192.168.1.14 TCP_MISS/500 678 GET http://example.com/page5.html - HIER_DIRECT/example.com text/html
+1620148625.000 250 192.168.1.114 TCP_HIT/500 123 GET http://example.com/page6.html - HIER_NONE text/html
+1620148626.000 350 192.168.1.14 TCP_DENIED/403 3456 GET http://example.com/page7.html - HIER_DIRECT/example.com text/html
+1620148627.000 100 192.168.1.14 TCP_DENIED/403 2345 GET http://example.com/page8.html - HIER_NONE text/html
+1620148628.000 50 192.168.1.14 TCP_DENIED/403 345 GET http://example.com/page9.html - HIER_DIRECT/example.com text/html
+1620148629.000 450 192.168.1.14 TCP_DENIED/403 4567 GET http://example.com/page10.html - HIER_DIRECT/example.com text/html
+1620148630.000 300 192.168.1.114 TCP_DENIED/403 567 GET http://example.com/page11.html - HIER_NONE text/html
+1620148631.000 150 192.168.1.14 TCP_DENIED/403 6789 GET http://example.com/page12.html - HIER_DIRECT/example.com text/html
+1620148632.000 200 192.168.1.114 TCP_HIT/200 789 GET http://example.com/page13.html - HIER_NONE text/html
+1620148633.000 250 192.168.1.14 TCP_MISS/500 890 GET http://example.com/page14.html - HIER_DIRECT/example.com text/html
