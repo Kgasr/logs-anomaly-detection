@@ -33,7 +33,7 @@ class TrainAndPredict:
             model = joblib.load(self.__model_name)
             X, y = self.__setup_features()
             predictions = model.predict(X)
-            print(X,y)
+            #print(X,y)
             # print(classification_report(y, predictions))
             self.__features['predicted_anomaly'] = predictions
             anomalous_records = self.__features[self.__features['predicted_anomaly'] == 1]

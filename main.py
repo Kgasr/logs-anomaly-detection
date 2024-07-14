@@ -2,7 +2,7 @@ from src import LogAnomalyDetection
 
 processing_mode = "predict"
 log_source_type = "squid"
-log_source_file = 'D:\\Technical\\Codebase\\Python\\logs-anomaly-detection\\data\\iis\\sample1.log'
+log_source_file = 'D:\\Technical\\Codebase\\Python\\logs-anomaly-detection\\data\\squid\\sample1.log'
 patterns_file = 'D:\\Technical\\Codebase\\Python\\logs-anomaly-detection\\patterns.yaml'
 
 
