@@ -3,6 +3,7 @@ import pandas as pd
 from .base_parser import BaseParser
 
 
+# Squid Log format parser class
 class SquidParser(BaseParser):
     def parse_logs(self):
         log_data = []

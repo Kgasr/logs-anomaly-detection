@@ -2,7 +2,7 @@ import re
 import pandas as pd
 from .base_parser import BaseParser
 
-
+# Custom App Log format parser class
 class CustomAppParser(BaseParser):
     def parse_logs(self):
         log_data = []

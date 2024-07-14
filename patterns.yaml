@@ -1,0 +1,21 @@
+error_codes:
+  403:
+    status: "403"
+    threshold: 5
+  404:
+    status: "404"
+    threshold: 5
+  500:
+    status: "500"
+    threshold: 8
+  ERR1:
+    status: "ERR1"
+    threshold: 3
+  ERR2:
+    status: "ERR2"
+    threshold: 3
+  ERR3:
+    status: "ERR3"
+    threshold: 3
+high_request_threshold: 10
+time_window: "1 min"

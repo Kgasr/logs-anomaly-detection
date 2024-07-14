@@ -1,1 +1,1 @@
-from .logs_anomaly_detection import logs_anomaly_detection
+from .logs_anomaly_detection import LogAnomalyDetection

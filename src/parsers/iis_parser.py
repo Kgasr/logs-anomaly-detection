@@ -2,6 +2,7 @@ import pandas as pd
 from .base_parser import BaseParser
 
 
+# IIS Log format parser class
 class IISParser(BaseParser):
     def parse_logs(self):
         log_data = []

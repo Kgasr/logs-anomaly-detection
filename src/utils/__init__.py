@@ -1,2 +1,2 @@
-from .data_processing import data_processing
+from .data_processing import DataProcessing
 from .logger import CustomLogger

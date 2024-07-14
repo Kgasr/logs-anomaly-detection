@@ -1,6 +1,17 @@
 import yaml
 
 
+# Config class to hold the mandatory variables
+class Config:
+    def __init__(self, processing_mode, log_source_type, log_source_file,patterns_file):
+        self.processing_mode = processing_mode
+        self.log_source_type = log_source_type
+        self.log_source_file = log_source_file
+        self.patterns_file = patterns_file
+
+
+# Reads YAML config file from given path.
+# Returns the specific section content if supplied in method call or returns overall file content
 def read_config(file_path, target_section=None):
     try:
         with open(file_path, 'r') as file:

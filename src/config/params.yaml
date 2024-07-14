@@ -1,0 +1,4 @@
+logging_file: 'logs/logs-anomaly-detection.log'
+logging_level: 'DEBUG'
+logging_format: '%(asctime)s :: %(levelname)s :: %(message)s :: Message Source:- file-"%(module)s" & method-"%(funcName)s"'
+output_file : 'output/output.xlsx'

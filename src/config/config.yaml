@@ -1,8 +1,0 @@
-model_name : "../models/iis_model.pkl"                            #Replace model name & path with your model name & path
-processing_mode : "Predict"                                       #Use Train or Predict to execute required step
-log_source : "iis"
-log_source_file : "../data/iis/iis_sample.log"                      #Use appropriate logs type such as iis, apache, squid, custom_app
-logging_file: "../logs/logs-anomaly-detection.log"
-logging_level: "DEBUG"
-patterns_file : "config/patterns.yaml"
-output_file : "../output/output.xlsx"

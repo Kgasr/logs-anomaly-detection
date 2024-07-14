@@ -4,6 +4,7 @@ from datetime import datetime
 from .base_parser import BaseParser
 
 
+# Apache Log format parser class
 class ApacheParser(BaseParser):
     def parse_logs(self):
         with open(self.file_path, 'r') as f:

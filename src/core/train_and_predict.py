@@ -1,35 +1,44 @@
+import os
+
 import joblib
-from sklearn.ensemble import IsolationForest
+from sklearn.ensemble import IsolationForest, RandomForestClassifier
+from sklearn.metrics import classification_report
 
 
-def setup_features(features):
-    X = features.drop(columns=['cip', 'datetime', 'is_anomaly'])
-    y = features['is_anomaly']
-    return X, y
+class TrainAndPredict:
+    def __init__(self, features, model_name):
+        self.__features = features
+        self.__model_name = model_name
 
+    # Returns features (X) and labels (y)
+    def __setup_features(self):
+        # print(features)
+        X = self.__features.drop(columns=['cip', 'datetime', 'is_anomaly'])
+        y = self.__features['is_anomaly'].astype(int)
+        return X, y
 
-def training(features, model_name):
-    X, y = setup_features(features)
-    print(X)
-    print(y)
-    model = IsolationForest(contamination=0.01, random_state=42)
-    model.fit(X, y)
-    joblib.dump(model, model_name)
-    return "Model saved successfully."
+    # Trains the model and save it to supplied location
+    def training(self):
+        X, y = self.__setup_features()
+        # model = IsolationForest(contamination=0.01, random_state=42)
+        model = RandomForestClassifier(random_state=4)
+        model.fit(X, y)
+        joblib.dump(model, self.__model_name)
+        model_path = os.path.abspath(self.__model_name)
+        return f'"{model_path}" Model saved successfully.'
 
-
-def prediction(features, model_name):
-    model = joblib.load(model_name)
-    X, y = setup_features(features)
-    print(X)
-    print(y)
-    anomalies = model.predict(X)
-    print(anomalies)
-    print(anomalies == -1)
-    print((anomalies == -1).astype(bool))
-    print(y == (anomalies == -1).astype(bool))
-    features['anomaly'] = (anomalies == -1).astype(bool)
-    # anomalous_records = y == (anomalies == -1).astype(bool)
-    anomalous_records = features[features['anomaly'] == True]
-    print(anomalous_records)
-    return anomalous_records
+    # Loads the model from supplied location and makes prediction to return anomalous records.
+    def prediction(self):
+        try:
+            model = joblib.load(self.__model_name)
+            X, y = self.__setup_features()
+            predictions = model.predict(X)
+            print(X,y)
+            # print(classification_report(y, predictions))
+            self.__features['predicted_anomaly'] = predictions
+            anomalous_records = self.__features[self.__features['predicted_anomaly'] == 1]
+            print(anomalous_records)
+            result = anomalous_records.drop(columns=['is_anomaly', 'predicted_anomaly'])
+            return result
+        except FileNotFoundError:
+            raise Exception(f'Failed to load the "{self.__model_name}"')
